@@ -1,0 +1,113 @@
+{
+  "name": "ag-docs-to-pdf",
+  "displayName": "Antigravity Docs to PDF",
+  "description": "One-click export of Antigravity AI agent artifacts (walkthroughs, implementation plans, tasks) to high-fidelity PDFs with Mermaid diagrams, GitHub alerts, and code blocks.",
+  "version": "0.2.0",
+  "publisher": "antigravity",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "icon": "images/icon.png",
+  "contributes": {
+    "commands": [
+      {
+        "command": "antigravity.exportAll",
+        "title": "Antigravity: Export All",
+        "icon": "$(library)"
+      },
+      {
+        "command": "antigravity.exportCurrentFile",
+        "title": "Antigravity: Export Current File",
+        "icon": "$(desktop-download)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "antigravity.exportCurrentFile",
+          "when": "resourceExtname == .md",
+          "group": "navigation"
+        },
+        {
+          "command": "antigravity.exportCurrentFile",
+          "when": "activeCustomEditorId == antigravity.jetskiArtifactsEditor",
+          "group": "navigation"
+        },
+        {
+          "command": "antigravity.exportCurrentFile",
+          "when": "activeCustomEditorId == antigravity.jetskiGlobalArtifactsEditor",
+          "group": "navigation"
+        },
+        {
+          "command": "antigravity.exportCurrentFile",
+          "when": "activeWebviewPanelId == antigravity.jetskiArtifactsEditor",
+          "group": "navigation"
+        },
+        {
+          "command": "antigravity.exportCurrentFile",
+          "when": "activeWebviewPanelId == antigravity.jetskiGlobalArtifactsEditor",
+          "group": "navigation"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "antigravity.exportCurrentFile",
+          "when": "resourceExtname == .md",
+          "group": "antigravity@1"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Antigravity Docs to PDF",
+      "properties": {
+        "antigravity.brainPath": {
+          "type": "string",
+          "default": "~/.gemini/antigravity/brain",
+          "description": "Path to the Antigravity brain directory containing conversation artifact folders."
+        },
+        "antigravity.exportPath": {
+          "type": "string",
+          "default": "docs",
+          "description": "Path (relative to workspace root) where exported PDFs will be saved."
+        },
+        "antigravity.chromePath": {
+          "type": "string",
+          "default": "",
+          "description": "Custom path to a Chromium-based browser executable (Chrome, Edge, Brave). Leave empty for auto-detection."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "node esbuild.js",
+    "watch": "node esbuild.js --watch",
+    "package": "npx @vscode/vsce package --no-dependencies",
+    "compile": "tsc --noEmit",
+    "pretest": "tsc -p tsconfig.test.json",
+    "test": "mocha --ui tdd --timeout 60000 --recursive 'out/src/test/suite/**/*.test.js'"
+  },
+  "dependencies": {
+    "chrome-launcher": "^1.1.2",
+    "markdown-it": "^14.1.0",
+    "puppeteer-core": "^23.11.1"
+  },
+  "devDependencies": {
+    "@types/markdown-it": "^14.1.2",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/test-electron": "^2.5.2",
+    "@vscode/vsce": "^3.2.1",
+    "esbuild": "^0.24.2",
+    "mocha": "^11.7.5",
+    "typescript": "^5.7.0"
+  }
+}
