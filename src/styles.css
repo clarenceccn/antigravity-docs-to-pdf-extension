@@ -1,0 +1,476 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Antigravity Docs to PDF — Stylesheet
+   Theme: GitHub Light / Antigravity Clean
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Reset & Base ──────────────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 14px;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #1f2328;
+  background: #ffffff;
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* ── Typography ────────────────────────────────────────────────────────── */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  line-height: 1.3;
+  margin-top: 1.5em;
+  margin-bottom: 0.6em;
+  color: #1f2328;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: 2em;
+  padding-bottom: 0.3em;
+  border-bottom: 2px solid #d1d9e0;
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 1.5em;
+  padding-bottom: 0.25em;
+  border-bottom: 1px solid #d1d9e0;
+}
+
+h3 {
+  font-size: 1.25em;
+}
+
+h4 {
+  font-size: 1em;
+}
+
+h5 {
+  font-size: 0.875em;
+}
+
+h6 {
+  font-size: 0.85em;
+  color: #656d76;
+}
+
+p {
+  margin-bottom: 0.8em;
+}
+
+a {
+  color: #0969da;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+strong {
+  font-weight: 600;
+}
+
+em {
+  font-style: italic;
+}
+
+/* ── Horizontal Rules ──────────────────────────────────────────────────── */
+
+hr {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #d1d9e0 20%, #d1d9e0 80%, transparent);
+  margin: 1.5em 0;
+}
+
+/* ── Lists ─────────────────────────────────────────────────────────────── */
+
+ul,
+ol {
+  padding-left: 2em;
+  margin-bottom: 0.8em;
+}
+
+li {
+  margin-bottom: 0.25em;
+}
+
+li>p {
+  margin-bottom: 0.4em;
+}
+
+/* Nested lists */
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+  margin-bottom: 0;
+}
+
+/* ── Checkboxes ────────────────────────────────────────────────────────── */
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  margin-right: 6px;
+  vertical-align: text-bottom;
+  position: relative;
+  top: 1px;
+}
+
+.checkbox svg {
+  width: 14px;
+  height: 14px;
+}
+
+.checkbox.unchecked {
+  color: #8b949e;
+  border: 2px solid #d1d9e0;
+  border-radius: 4px;
+}
+
+.checkbox.unchecked svg {
+  display: none;
+}
+
+.checkbox.checked {
+  background: #2da44e;
+  color: #ffffff;
+  border-radius: 4px;
+}
+
+.checkbox.in-progress {
+  background: #bf8700;
+  color: #ffffff;
+  border-radius: 4px;
+}
+
+/* ── Blockquotes ───────────────────────────────────────────────────────── */
+
+blockquote {
+  border-left: 3px solid #d1d9e0;
+  color: #656d76;
+  padding: 0.5em 1em;
+  margin: 0 0 1em 0;
+}
+
+blockquote>p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Code (inline) ─────────────────────────────────────────────────────── */
+
+code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 0.875em;
+  background: #f6f8fa;
+  border: 1px solid #d1d9e0;
+  border-radius: 6px;
+  padding: 0.15em 0.4em;
+  color: #1f2328;
+}
+
+/* ── Code Blocks ───────────────────────────────────────────────────────── */
+
+.code-block {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  background: #f6f8fa;
+  border: 1px solid #d1d9e0;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 0.8em 0;
+  overflow-x: auto;
+  white-space: pre;
+  page-break-inside: avoid;
+}
+
+.code-block code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+  border-radius: 0;
+}
+
+/* Diff highlighting */
+.diff-add {
+  background: #dafbe1;
+  color: #1a7f37;
+  display: inline-block;
+  width: 100%;
+}
+
+.diff-del {
+  background: #ffebe9;
+  color: #cf222e;
+  display: inline-block;
+  width: 100%;
+}
+
+.diff-ctx {
+  display: inline-block;
+  width: 100%;
+}
+
+/* ── Tables ─────────────────────────────────────────────────────────────── */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 1em 0;
+  font-size: 0.9375rem;
+  page-break-inside: avoid;
+}
+
+thead {
+  background: #f6f8fa;
+}
+
+th {
+  font-weight: 600;
+  text-align: left;
+  padding: 8px 12px;
+  border: 1px solid #d1d9e0;
+  color: #1f2328;
+}
+
+td {
+  padding: 8px 12px;
+  border: 1px solid #d1d9e0;
+}
+
+tbody tr:nth-child(even) {
+  background: #f6f8fa;
+}
+
+tbody tr:hover {
+  background: #eef2f6;
+}
+
+/* ── Images ─────────────────────────────────────────────────────────────── */
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+/* ── GitHub-style Alerts ───────────────────────────────────────────────── */
+
+.markdown-alert {
+  border-left: 4px solid;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 1em 0;
+  page-break-inside: avoid;
+}
+
+.markdown-alert>p:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-alert-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  margin-bottom: 6px;
+}
+
+.markdown-alert-title svg {
+  flex-shrink: 0;
+}
+
+/* NOTE — Blue */
+.markdown-alert-note {
+  border-color: #218bff;
+  background: #ddf4ff;
+}
+
+.markdown-alert-note .markdown-alert-title {
+  color: #0969da;
+}
+
+/* TIP — Green */
+.markdown-alert-tip {
+  border-color: #3fb950;
+  background: #dafbe1;
+}
+
+.markdown-alert-tip .markdown-alert-title {
+  color: #1a7f37;
+}
+
+/* IMPORTANT — Purple */
+.markdown-alert-important {
+  border-color: #a371f7;
+  background: #eddeff;
+}
+
+.markdown-alert-important .markdown-alert-title {
+  color: #8250df;
+}
+
+/* WARNING — Yellow/Amber */
+.markdown-alert-warning {
+  border-color: #d29922;
+  background: #fff8c5;
+}
+
+.markdown-alert-warning .markdown-alert-title {
+  color: #9a6700;
+}
+
+/* CAUTION — Red */
+.markdown-alert-caution {
+  border-color: #f85149;
+  background: #ffebe9;
+}
+
+.markdown-alert-caution .markdown-alert-title {
+  color: #cf222e;
+}
+
+/* ── Mermaid Diagrams ──────────────────────────────────────────────────── */
+
+.mermaid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5em auto;
+  padding: 16px;
+  background: #ffffff;
+  border: 1px solid #e6e8eb;
+  border-radius: 8px;
+  page-break-inside: avoid;
+  overflow: visible;
+}
+
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ── Carousel (PDF: stacked slides) ────────────────────────────────────── */
+
+.carousel-container {
+  margin: 1em 0;
+  page-break-inside: avoid;
+}
+
+.carousel-slide {
+  padding: 12px 0;
+}
+
+.carousel-divider {
+  border: 0;
+  height: 1px;
+  background: #e6e8eb;
+  margin: 8px 0;
+}
+
+/* ── Print / Page Break Rules ──────────────────────────────────────────── */
+
+@page {
+  size: A4;
+  margin: 20mm 15mm;
+}
+
+@media print {
+  body {
+    font-size: 12px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    page-break-after: avoid;
+  }
+
+  .code-block,
+  .mermaid,
+  .markdown-alert,
+  table,
+  img,
+  .carousel-container {
+    page-break-inside: avoid;
+  }
+
+  a {
+    color: #0969da;
+  }
+
+  /* Ensure links show their URL in print */
+  a[href^="http"]::after {
+    content: none;
+    /* Disabled by default — enable if you want URLs printed */
+  }
+}
+
+/* ── Utility ───────────────────────────────────────────────────────────── */
+
+.text-center {
+  text-align: center;
+}
+
+.text-muted {
+  color: #656d76;
+}
+
+.mt-1 {
+  margin-top: 0.5em;
+}
+
+.mb-1 {
+  margin-bottom: 0.5em;
+}
+
+/* ── File Links with Icons ─────────────────────────────────────────────── */
+
+.file-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 0;
+  color: #1f2328;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.file-link-name {
+  font-size: inherit;
+  line-height: 1.4;
+}
